@@ -1,162 +1,115 @@
-/* --- Base Styles (Mobile First) --- */
-.hero {
-  /* 1. Додаємо градієнт, щоб текст читався на світлому фоні */
-  background-image:
-    linear-gradient(
-      90deg,
-      rgba(0, 0, 0, 0.55) 0%,
-      rgba(0, 0, 0, 0.35) 40%,
-      rgba(0, 0, 0, 0.05) 100%
-    ),
-    url('../img/hero/background-min.jpg');
-  background-repeat: no-repeat;
-background-position: center right;
-
-  background-size: cover;
-  
-  /* Загальні налаштування */
-  width: 100%;
-  margin: 0 auto;
-}
-
-/* Retina display support (x2) */
-@media (min-device-pixel-ratio: 2),
-  (min-resolution: 192dpi),
-  (min-resolution: 2dppx) {
-  .hero {
-    background-image:
-      linear-gradient(
-        90deg,
-        rgba(0, 0, 0, 0.55) 0%,
-        rgba(0, 0, 0, 0.35) 40%,
-        rgba(0, 0, 0, 0.05) 100%
-      ),
-      url('../img/hero/background@2x.jpg');
-  }
-}
-
 .hero-container {
-  
-  /* 2. Прибираємо фіксовану ширину 335px. Контейнер має бути гумовим */
-  width: 100%; 
-  height: 100%;
-  
-  /* Відступи для мобільної версії */
-  padding-top: 64px; /* Підлаштуйте під висоту хедера + відступ */
-  padding-bottom: 115px;
-  /* Бокові відступи зазвичай задаються у глобальному класі .container, 
-     але якщо там їх немає, розкоментуйте рядки нижче: */
-  /* padding-left: 20px; */
-  /* padding-right: 20px; */
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* Центруємо контент по вертикалі */
-  align-items: flex-start; /* Притискаємо текст вліво */
+  padding-left: 20px;
+  padding-top: 64px;
+  padding-bottom: 116px;
+  background-image: linear-gradient(
+      to right,
+      rgba(62, 54, 38, 0.74) 0%,
+      rgba(62, 54, 38, 0) 100%
+    ),
+    image-set(
+      url('../img/hero/background-min.jpg') 1x,
+      url('../img/hero/background@2x-min.jpg') 2x
+    );
+  background-repeat: no-repeat, no-repeat;
+  background-position: left top, center;
+  background-size: cover, cover;
 }
 
 .hero-title {
-  /* Ваші шрифти (перевірте підключення) */
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-weight: 700;
-  font-size: 40px; /* Як у вас в коді */
+  font-size: 40px;
   line-height: 1.2;
   letter-spacing: -0.01em;
   color: #fff;
-  
-  margin-bottom: 24px;
-  max-width: 320px; /* Обмеження ширини заголовка на мобільному - ОК */
 }
 
 .hero-descr {
-  
-  font-family: "IBM Plex Sans", sans-serif;
+  font-family: 'IBM Plex Sans', sans-serif;
+  margin-top: 24px;
+  margin-bottom: 32px;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.5;
   color: #fff;
-  
-  margin-bottom: 32px;
 }
 
-.hero-btn {
+.hero-button {
+  display: inline-block;
+  border: 1px solid #88765c;
+  border-radius: 8px;
+  padding: 12px 24px;
 
-background: #88765c;
-  text-decoration: none;
-  
-  padding: 14px 28px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  
-  width: fit-content;
-
-
+  background: #88765c;
   font-weight: 400;
-font-size: 14px;
-font-family: "IBM Plex Sans", sans-serif;
-
-/* line-height: 21px; */ 
-line-height: 1.5;
-color: #fff;
-display: flex;
-align-items: center;
-justify-content: center;
-flex-direction: row;
-gap: 8px;
-border: 1px solid #88765c;
-border-radius: 8px;
-padding-block: 12px;
-padding-inline: 24px;
+  font-size: 14px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  line-height: 1.5;
+  color: #fff;
 }
 
-.hero-btn:hover,
-.hero-btn:focus {
-  background-color: none;
-  outline: none;
-  
+.hero-button:hover {
+  background-color: #eee9e3;
+
+  color: #02060a;
 }
 
+.hero-button:active {
+  box-shadow: inset 0 4px 6px -2px rgba(0, 0, 0, 0.03),
+    inset 0 12px 16px -4px rgba(0, 0, 0, 0.08);
+}
 
-/* @media screen and (min-width: 768px) {
+@media only screen and (min-width: 768px) {
   .hero-container {
-     padding-top: 200px;
-     padding-bottom: 150px;
+    padding-top: 64px;
+    padding-bottom: 234px;
+    padding-left: 32px;
+    background-image: linear-gradient(
+        to right,
+        rgba(62, 54, 38, 0.74) 0%,
+        rgba(62, 54, 38, 0) 100%
+      ),
+      image-set(
+        url('../img/hero/background-min.jpg') 1x,
+        url('../img/hero/background@2x-min.jpg') 2x
+      );
   }
 
+  .hero-title {
+    width: 622px;
+  }
+
+  .hero-descr {
+    width: 512px;
+    margin-top: 24px;
+    margin-bottom: 32px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .hero-container {
+    padding-top: 128px;
+    padding-bottom: 412px;
+
+    background-image: linear-gradient(
+        to right,
+        rgba(62, 54, 38, 0.74) 0%,
+        rgba(62, 54, 38, 0) 100%
+      ),
+      image-set(
+        url('../img/hero/background-min.jpg') 1x,
+        url('../img/hero/background@2x-min.jpg') 2x
+      );
+  }
   .hero-title {
     font-size: 56px;
-    margin-bottom: 24px;
-    max-width: 580px;
   }
 
   .hero-descr {
+    font-size: 18px;
+  }
+  .hero-button {
     font-size: 16px;
-    margin-bottom: 32px;
-    max-width: 400px;
   }
 }
-
-
-@media screen and (min-width: 1440px) {
-  .hero-container {
-    padding-top: 250px;
-    padding-bottom: 200px;
-  }
-
-  .hero-title {
-    font-size: 64px;
-    line-height: 1.05;
-    max-width: 700px;
-  }
-
-  .hero-descr {
-    font-size: 18px;
-    margin-bottom: 40px;
-    max-width: 480px;
-  }
-
-  .hero-btn {
-    font-size: 18px;
-    padding: 16px 32px;
-  }
-} */
