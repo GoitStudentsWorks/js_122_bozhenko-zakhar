@@ -13,3 +13,6 @@
 body.modal-open {
   overflow: hidden;
 }
+.adopt-modal {
+  color: red;
+}
