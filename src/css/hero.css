@@ -9,10 +9,10 @@
     ),
     image-set(
       url('../img/hero/background-min.jpg') 1x,
-      url('../img/hero/background@2x-min.jpg') 2x
+        url('../img/hero/background@2x-min.jpg') 2x
     );
   background-repeat: no-repeat, no-repeat;
-  /* background-position: left top, center; */
+  background-position: left top, center;
   background-size: cover, cover;
 }
 
@@ -71,7 +71,7 @@
         rgba(62, 54, 38, 0) 100%
       ),
       image-set(
-        url('../img/hero/background-min.jpg') 1x,
+       url('../img/hero/background-min.jpg') 1x,
         url('../img/hero/background@2x-min.jpg') 2x
       );
   }
