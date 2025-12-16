@@ -6,6 +6,7 @@ import 'swiper/css/pagination';
 import 'css-star-rating/css/star-rating.css';
 
 
+
 const swiperWrapper = document.querySelector('.swiper-wrapper');
 
 function renderStars(value) {
@@ -60,6 +61,8 @@ function initSwiper() {
     modules: [Navigation, Pagination],
     slidesPerView: 1,
     spaceBetween: 20,
+    observer: true, 
+    observeParents: true,
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
@@ -74,6 +77,7 @@ function initSwiper() {
       }
     }
   });
+  console.log("Swiper ініціалізується!");
 }
 
 getFeedbacks();
