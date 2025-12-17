@@ -1,49 +1,61 @@
 .faq-title {
     font-family: "Open Sans", sans-serif;
-        font-weight: 700;
-        font-size: 48px;
-        line-height: 1.2;
-        letter-spacing: -0.01em;
-        text-align: center;
-        color: #02060a;
-        padding-bottom: 80px;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    text-align: center;
+    color: #02060a;
+    padding: 80px 0;
 }
 
-.faq {
+#faq {
     background-color: #f6f4f1;
     padding: 0 224px;
 }
+
+#faq .ac {
+    background-color: #eee9e3;
+    border-radius: 8px;
+    margin: 0;
+}
+
+#faq .ac-text {
+    padding: 0;
+}
+
+#faq .ac-trigger {
+    padding: 0;
+}
+
+#faq .ac-panel {
+    margin-left: 24px;
+    margin-right: 24px;
+} 
+
+#panel p {
+    margin-bottom: 24px;
+}
+
+
 
 .accordion {
     padding: 0;
     display: flex;
     flex-direction: column;
     gap: 16px;
-    
+    padding-bottom: 80px;
 }
 
-.ac {
-    background-color: #eee9e3;
-    border-radius: 8px;
-    
+
+
+
+
+
+
+.ol-list {
+    padding: 0px 24px 24px;
 }
-
-.ac-header{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column; 
-    border: 0px solid rgba(2, 6, 10, 0.15); 
-    border-radius: 8px;
-    cursor: pointer;
-    font-family: "IBM Plex Sans", sans-serif;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 1.5;
-    background-color: #eee9e3;
-
-    
-}  
 
 
 
@@ -54,11 +66,8 @@
     font-size: 18px;
     line-height: 1.5;
     color: #02060a;
-    padding: 20px 24px;
-
+    padding: 20px 24px; 
     margin: 0;
-    padding-left: 24px;
-    padding-right: 60px;
     text-align: left;
 
 }
@@ -66,7 +75,6 @@
 
 
 .icon-plus {
-
     position: absolute;
     right: 21.5px;
     top: 50%;
@@ -74,35 +82,27 @@
     width: 24px;
     height: 24px;
     flex-shrink: 0;
-} 
-
-
-
-
-
-
-.ac-panel {
-    background-color: #eee9e3;
 }
 
 
-.ac-text {
-    padding: 0;
-}
 
-.ac-text
 
-.custom-list {
-    display: block;
-}
+
+
+
+
 
 
 .ac-panel .custom-list {
     list-style: disc;
-    list-style-position: outside;
-    padding: 0px 24px 24px;
-    /* margin: 0 0 16px 0; */
+    padding-left: 24px;
+    margin-bottom: 24px;
 }
+ 
+
+
+
+
 
 .ac-panel .custom-list li {
     display: list-item;
@@ -122,21 +122,22 @@
 
 .icon {
     position: absolute;
-    transform: translateY(-50%);
-    width: 24px;
-    height: 24px;
-    transition: opacity 0.3s ease;
+        right: 21.5px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 24px;
+        height: 24px;
+        transition: opacity 0.3s ease;
 }
 
 .icon-close {
-    opacity: 0;
+    display: none;
 }
 
-.ac-trigger.active .icon-plus {
-    opacity: 0;
+.ac.is-active .icon-plus {
+    display: none;
 }
 
-.ac-trigger.active .icon-cross {
-    opacity: 1;
+.ac.is-active .icon-close {
+    display: inline-block;
 }
-

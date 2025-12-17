@@ -6,21 +6,33 @@ new Accordion('.accordion', {
   showMultiple: false,
   collapse: true,
 });
+ 
 
-const buttons = document.querySelectorAll('.ac-header .ac-trigger');
+const accordions = document.querySelectorAll('#faq .ac');
 
-buttons.forEach(button => {
-  const icon = button.querySelector('.icon-plus');
-  button.addEventListener('click', () => {
-    const useTag = icon.querySelector('use');
-    const current = useTag.getAttribute('href');
-    if (current.includes('icon-add')) {
-      useTag.setAttribute('href', './img/sprite.svg#icon-close');
-    } else {
-      useTag.setAttribute('href', './img/sprite.svg#icon-add');
-    }
-  });
+accordions.forEach(ac => {
+	const iconPlus = ac.querySelector('.icon-plus');
+	const iconClose = ac.querySelector('.icon-close');
+
+	const observer = new MutationObserver(() => {
+		if (ac.classList.contains('is-active')) {
+			iconPlus.style.display = 'none';
+			iconClose.style.display = 'inline-block';
+		} else {
+			iconPlus.style.display = 'inline-block';
+			iconClose.style.display = 'none';
+		}
+	});
+
+	observer.observe(ac, {
+		attributes: true,
+		attributeFilter: ['class']
+	});
 });
+
+
+
+
 
 
 
