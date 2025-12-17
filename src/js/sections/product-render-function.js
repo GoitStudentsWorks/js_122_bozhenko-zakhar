@@ -9,7 +9,7 @@ export const renderCategories = (data) => {
         .join('');
     refs.categoryList.innerHTML = markup;
 };
-
+//======================================================================================
 export const renderProducts = (data) => {
     const markup = data
         .map(({ _id, image, species, name, categories, age, gender, behavior }) => {
@@ -23,7 +23,7 @@ export const renderProducts = (data) => {
             return `
             <li class="product-card" data-id="${_id}">
                 <article class="product-card__body">
-                    <img class="product-card__image" src="${image}" alt="${species}" loading="lazy"/>
+                    <img class="product-card__image" src="${image}" alt="${species}" loading="lazy" width="392" height="309"/>
                 
                     <p class="product-card__title">${species}</p>
                     <h3 class="product-card__name">${name}</h3>
@@ -45,7 +45,3 @@ export const renderProducts = (data) => {
         .join('');
     refs.productlist.insertAdjacentHTML('beforeend', markup);
 };
-
-export const clearProducts = () => {
-    refs.productlist.innerHTML = '';
-}

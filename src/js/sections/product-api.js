@@ -1,9 +1,8 @@
+import { dataStorage } from "./product-refs";
 const BASE_URL = 'https://paw-hut.b.goit.study';
 const ENDPOINTS = {
     CATEGORIES: '/api/categories',
     PRODUCTS: '/api/animals',
-    BY_CATEGORY: '/api/animals',
-
 };
 
 import axios from "axios";
@@ -24,16 +23,20 @@ export const fetchAllProducts = async (page, limit) => {
             page,
         },
     });
-    
+    // Save to dataStorage without duplicates
+    data.animals.forEach(animal => {
+        dataStorage.animals.set(animal._id, animal);
+    });
+    console.log(dataStorage);
     return data;
 };
 
-export const fetchProductsByCategory = async (
+export const fetchProductsByCategory = async ({
     categoryId,
-    limit = 9,
     page = 1,
+    limit = 9,
     
-) => {
+}) => {
     
 const { data } = await axios(`${ENDPOINTS.PRODUCTS}`, {
     params: {
@@ -42,5 +45,10 @@ const { data } = await axios(`${ENDPOINTS.PRODUCTS}`, {
         limit,
     }
 });
+    // Save to dataStorage without duplicates
+    data.animals.forEach(animal => {
+        dataStorage.animals.set(animal._id, animal);
+    });
+    console.log(dataStorage);
     return data;
 };
