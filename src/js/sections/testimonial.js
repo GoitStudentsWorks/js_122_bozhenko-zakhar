@@ -7,39 +7,26 @@ import 'swiper/css/pagination';
 const swiperWrapper = document.querySelector('.swiper-wrapper');
 
 function renderStars(value) {
-  const rating = parseFloat(value) || 0;              
-  const rounded = Math.round(rating * 2) / 2;         
-  const fullStars = Math.floor(rounded);
-  const hasHalf = (rounded - fullStars) === 0.5;
-  const emptyStars = 5 - fullStars - (hasHalf ? 1 : 0);
-
+  const rating = parseFloat(value) || 0;
+  const rounded = Math.floor(rating) + (rating % 1 >= 0.5 ? 0.5 : 0);
   let starsMarkup = '';
 
-  for (let i = 0; i < fullStars; i++) {
-    starsMarkup += `
-      <div class="star">
-        <svg class="star-icon">
-          <use xlink:href="../img/sprite.svg#icon-star-filled"></use>
-        </svg>
-      </div>
-    `;
-  }
+  for (let i = 1; i <= 5; i++) {
+    let icon = 'icon-star-outline'; 
+    let starClass = ''; 
 
-  if (hasHalf) {
-    starsMarkup += `
-      <div class="star">
-        <svg class="star-icon">
-          <use xlink:href="../img/sprite.svg#icon-star-half"></use>
-        </svg>
-      </div>
-    `;
-  }
+    if (i <= Math.floor(rounded)) {
+      icon = 'icon-star-filled';
+      starClass = 'filled';
+    } else if (i === Math.ceil(rounded) && rounded % 1 !== 0) {
+      icon = 'icon-star-half';
+      starClass = 'half';
+    }
 
-  for (let i = 0; i < emptyStars; i++) {
     starsMarkup += `
       <div class="star">
         <svg class="star-icon">
-          <use xlink:href="../img/sprite.svg#icon-star-empty"></use>
+          <use href="../img/sprite.svg#${icon}"></use>
         </svg>
       </div>
     `;
@@ -78,12 +65,9 @@ function renderSlides(feedbacks) {
 
 function initSwiper() {
   new Swiper('.swiper', {
-    autoplay: {
-   delay: 5,
- },
     modules: [Navigation, Pagination],
     slidesPerView: 1,
-    spaceBetween: 20,
+    spaceBetween: 32,
     observer: true,
     observeParents: true,
     navigation: {
