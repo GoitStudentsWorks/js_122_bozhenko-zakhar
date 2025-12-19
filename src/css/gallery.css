@@ -16,6 +16,7 @@
 
 .gallerySlide {
   position: relative;
+  padding: 24px;
 }
 
 .gallerySlide img {
@@ -44,8 +45,8 @@
   color: #f6f4f1;
 }
 .galleryPagination,
-.gallerySwiper .swiper-button-prev,
-.gallerySwiper .swiper-button-next {
+.gallerySwiper .swiper-button-next,
+.gallerySwiper .swiper-button-prev {
   display: none;
 }
 
@@ -119,6 +120,7 @@
 
   .galleryPagination {
     display: block;
+    margin: 0 auto;
   }
 
   .gallerySwiper {

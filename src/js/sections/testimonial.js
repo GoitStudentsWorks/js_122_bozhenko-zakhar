@@ -12,8 +12,8 @@ function renderStars(value) {
   let starsMarkup = '';
 
   for (let i = 1; i <= 5; i++) {
-    let icon = 'icon-star-outline'; 
-    let starClass = ''; 
+    let icon = 'icon-star-outline';
+    let starClass = '';
 
     if (i <= Math.floor(rounded)) {
       icon = 'icon-star-filled';
@@ -39,18 +39,22 @@ async function getFeedbacks() {
   try {
     const res = await fetch('https://paw-hut.b.goit.study/api/feedbacks');
     const data = await res.json();
-    const feedbacks = Array.isArray(data) ? data.slice(0, 6) : data.feedbacks.slice(0, 6);
+    const feedbacks = Array.isArray(data)
+      ? data.slice(0, 6)
+      : data.feedbacks.slice(0, 6);
     if (feedbacks && feedbacks.length > 0) {
       renderSlides(feedbacks);
       initSwiper();
     }
   } catch (error) {
-    console.error("Помилка завантаження відгуків:", error);
+    console.error('Помилка завантаження відгуків:', error);
   }
 }
 
 function renderSlides(feedbacks) {
-  const markup = feedbacks.map(fb => `
+  const markup = feedbacks
+    .map(
+      fb => `
     <div class="swiper-slide">
       <div class="testimonial-card">
         ${renderStars(fb.rate)}
@@ -58,7 +62,9 @@ function renderSlides(feedbacks) {
         <p class="testimonial-author">${fb.author}</p>
       </div>
     </div>
-  `).join('');
+  `
+    )
+    .join('');
 
   swiperWrapper.innerHTML = markup;
 }
@@ -81,8 +87,8 @@ function initSwiper() {
     breakpoints: {
       704: {
         slidesPerView: 2,
-      }
-    }
+      },
+    },
   });
 }
 
