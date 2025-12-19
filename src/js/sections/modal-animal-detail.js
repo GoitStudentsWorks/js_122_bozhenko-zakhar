@@ -24,6 +24,7 @@ function openAnimalModal(id) {
 
     document.body.classList.add(".not-scroll");
 
+
 		refs.dataBtn = document.querySelector("[data-btn]");
 
 		refs.dataBtn.addEventListener("click", () => {
@@ -79,7 +80,7 @@ function createMarkup({image, species, name, age, gender, description, healthSta
 `)
 }
 
-function closeModal() {
+function closeAnimalModal() {
     refs.backdrop.classList.remove("is-open");
     document.body.classList.remove(".not-scroll");
 };
@@ -87,13 +88,13 @@ function closeModal() {
 refs.backdrop.addEventListener("click", (e) => {
 
     if (e.target === refs.backdrop || e.target.closest(".animal-detail-close-btn")) {
-        closeModal();
-    }
+        closeAnimalModal();
+    };
     
 });
 
 document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
-        closeModal();
-    }
+        closeAnimalModal();
+    };
 });
