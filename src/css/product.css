@@ -347,7 +347,7 @@
 /* tablet */
 @media screen and (min-width: 768px) {
     .container {
-        max-width: 704px;
+        max-width: 768px;
         margin: 0 auto;
     }
     .categories-list {
@@ -377,7 +377,7 @@
         padding: 80px 64px 32px;
     }
     .container {
-        max-width: 1312px;
+        max-width: 1440px;
         margin: 0 auto;
     }
     .products-thumb {
