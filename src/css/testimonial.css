@@ -3,12 +3,10 @@
   display: flex;
   gap: 4px;
 }
-
 .star {
   width: 20px;
   height: 20px;
 }
-
 .star svg {
   width: 100%;
   height: 100%;
@@ -16,22 +14,18 @@
   stroke: #02060a;
   stroke-width: 1.5px;
 }
-
 /* Повна зірка */
 .star.filled svg {
   fill: #02060a;
 }
-
 /* Половинка зірки */
 .star.half svg {
   fill: url(#half-gradient);
 }
-
 /* Порожня зірка */
 .star svg use[href*="icon-star-outline"] {
   fill: #fff;
 }
-
 /* Загальна структура секції */
 .testimonial-title {
   display: flex;
@@ -40,7 +34,6 @@
   gap: 24px;
   margin-bottom: 40px;
 }
-
 .testimonial-head {
   display: flex;
   flex-direction: column;
@@ -53,11 +46,9 @@
   color: #02060a;
   margin: 0;
 }
-
 .desktop-br {
   display: none;
 }
-
 .testimonial-text {
   font-family: "IBM Plex Sans", sans-serif;
   line-height: 1.5;
@@ -65,14 +56,12 @@
   color: #02060a;
   margin: 0;
 }
-
 .testimonial-card {
   display: flex;
   flex-wrap: wrap;
   gap: 32px;
   margin-bottom: 40px;
 }
-
 .testimonial-quote {
   font-family: "IBM Plex Sans", sans-serif;
   font-weight: 400;
@@ -96,20 +85,16 @@
 .testimonials-swiper {
   width: 100%;
 }
-
 .testimonials-wrapper {
   display: flex;
   width: 100%;
 }
-
 .swiper-controls {
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: space-between;
 }
-
 .testimonials-pagination {
-  display: flex;
   position: static;
   text-align: left;
   align-items: center;
@@ -117,9 +102,7 @@
   display: flex;
   flex-direction: row;
   gap: 8px;
-  margin-bottom: 12px;
 }
-
 .swiper-pagination-bullet {
   width: 8px;
   height: 8px;
@@ -129,22 +112,19 @@
   opacity: 1;
   transition: transform 0.3s ease, background-color 0.3s ease;
 }
-
 .swiper-pagination-bullet-active {
   background-color: #02060a !important;
   transform: scale(1.5);
 }
-
 .swiper-navigation-buttons {
   display: flex;
   gap: 16px;
   position: relative;
   min-width: 120px;
-  height: 48px;
+  height: 64px;
   align-items: center;
   justify-content: flex-end;
 }
-
 /* Кнопки навігації */
 .swiper-navigation-buttons {
   display: flex;
@@ -152,7 +132,6 @@
   position: relative;
   min-width: 120px;
 }
-
 .testimonials-prev,
 .testimonials-next {
   display: flex;
@@ -170,7 +149,6 @@
   outline: none;
   cursor: pointer;
 }
-
 .testimonials-prev:hover,
 .testimonials-prev:focus,
 .testimonials-next:hover,
@@ -178,7 +156,6 @@
   border: 1px solid rgba(2, 6, 10, 0.6);
   cursor: pointer;
 }
-
 .testimonials-prev:active,
 .testimonials-next:active {
   border: 1px solid rgba(2, 6, 10, 0.6);
@@ -187,7 +164,6 @@
   background-color: #eee9e3;
   cursor: pointer;
 }
-
 .icon-back,
 .icon-forward {
   width: 24px;
@@ -198,52 +174,43 @@
   fill: none;
   pointer-events: none;
 }
-
 /* Адаптив для Mobile */
-@media screen and (min-width: 375px) {
+@media screen and (min-width: 335px) {
   .container {
-    max-width: 375px;
+    max-width: 385px;
   }
 }
-
 /* Tablet */
 @media screen and (min-width: 704px) {
   .container {
     max-width: 704px;
     padding: 0 32px;
   }
-
   .testimonial-title,
   .testimonials-swiper {
     width: 100%;
   }
-
   .desktop-br {
     display: none;
   }
 }
-
 /* Desktop */
 @media screen and (min-width: 1312px) {
   .container {
     max-width: 1312px;
     padding: 0 80px;
   }
-
   .testimonial-title,
   .testimonials-swiper {
     width: 100%;
   }
-
   .testimonial-head {
     font-size: 48px;
     line-height: 1.2;
   }
-
   .testimonial-text {
     font-size: 18px;
   }
-
   .desktop-br {
     display: inline;
     line-height: 1.2;
