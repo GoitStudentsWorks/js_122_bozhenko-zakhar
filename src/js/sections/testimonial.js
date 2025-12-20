@@ -4,7 +4,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-const swiperWrapper = document.querySelector('.testimonials-wrapper');
+const swiperWrapperTestimonials = document.querySelector('.testimonials-wrapper');
 
 function renderStars(value) {
   const rating = parseFloat(value) || 0;
@@ -24,7 +24,7 @@ function renderStars(value) {
     }
 
     starsMarkup += `
-      <div class="star">
+      <div class="star ${starClass}">
         <svg class="star-icon">
           <use href="../img/sprite.svg#${icon}"></use>
         </svg>
@@ -41,8 +41,8 @@ async function getFeedbacks() {
     const data = await res.json();
 
     const feedbacks = Array.isArray(data)
-      ? data.slice(0, 6)
-      : data.feedbacks.slice(0, 6);
+    ?data.slice(1, 7)
+    :data.feedbacks.slice(1, 7);
 
     if (feedbacks.length) {
       renderSlides(feedbacks);
@@ -53,11 +53,11 @@ async function getFeedbacks() {
   }
 }
 
-function renderSlides(feedbacks) {
-  swiperWrapper.innerHTML = feedbacks
+function renderSlides(feedbackSection) {
+  swiperWrapperTestimonials.innerHTML = feedbackSection
     .map(
       fb => `
-        <div class="swiper-slide">
+        <div class="swiper-slide swiper-slide-testimonial">
           <div class="testimonial-card">
             ${renderStars(fb.rate)}
             <p class="testimonial-quote">${fb.description}</p>
@@ -70,26 +70,40 @@ function renderSlides(feedbacks) {
 }
 
 function initSwiper() {
-  new Swiper('.testimonials-swiper', {
+  const section = document.querySelector('.section.testimonial'); // конкретна секція
+  const swiperEl = section.querySelector('.testimonials-swiper');
+  const nextBtn = section.querySelector('.js-testimonials-next');
+  const prevBtn = section.querySelector('.js-testimonials-prev');
+  const paginationEl = section.querySelector('.testimonials-pagination');
+  new Swiper(swiperEl, {
     modules: [Navigation, Pagination],
     slidesPerView: 1,
+    slidesPerGroup: 1,
     spaceBetween: 32,
     loop: false,
+    watchOverflow: true,
     observer: true,
     observeParents: true,
     navigation: {
-      nextEl: '.testimonials-next',
-      prevEl: '.testimonials-prev',
+      nextEl: nextBtn,
+      prevEl: prevBtn,
+      disabledClass: 'swiper-button-isNotActive',
     },
-
+keyboard: {
+      enabled: true,        
+      onlyInViewport: true,  
+      pageUpDown: true,      
+    },
     pagination: {
-      el: '.testimonials-pagination',
+      el: paginationEl,
       clickable: true,
     },
 
     breakpoints: {
-      704: {
+      768: {
+        slidesPerGroup: 1,
         slidesPerView: 2,
+        spaceBetween: 32,
       },
     },
   });
