@@ -4,7 +4,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-const swiperWrapper = document.querySelector('.swiper-wrapper');
+const swiperWrapper = document.querySelector('.testimonials-wrapper');
 
 function renderStars(value) {
   const rating = parseFloat(value) || 0;
@@ -39,10 +39,12 @@ async function getFeedbacks() {
   try {
     const res = await fetch('https://paw-hut.b.goit.study/api/feedbacks');
     const data = await res.json();
+
     const feedbacks = Array.isArray(data)
       ? data.slice(0, 6)
       : data.feedbacks.slice(0, 6);
-    if (feedbacks && feedbacks.length > 0) {
+
+    if (feedbacks.length) {
       renderSlides(feedbacks);
       initSwiper();
     }
@@ -52,38 +54,39 @@ async function getFeedbacks() {
 }
 
 function renderSlides(feedbacks) {
-  const markup = feedbacks
+  swiperWrapper.innerHTML = feedbacks
     .map(
       fb => `
-    <div class="swiper-slide">
-      <div class="testimonial-card">
-        ${renderStars(fb.rate)}
-        <p class="testimonial-quote">${fb.description}</p>
-        <p class="testimonial-author">${fb.author}</p>
-      </div>
-    </div>
-  `
+        <div class="swiper-slide">
+          <div class="testimonial-card">
+            ${renderStars(fb.rate)}
+            <p class="testimonial-quote">${fb.description}</p>
+            <p class="testimonial-author">${fb.author}</p>
+          </div>
+        </div>
+      `
     )
     .join('');
-
-  swiperWrapper.innerHTML = markup;
 }
 
 function initSwiper() {
-  new Swiper('.swiper', {
+  new Swiper('.testimonials-swiper', {
     modules: [Navigation, Pagination],
     slidesPerView: 1,
     spaceBetween: 32,
+    loop: false,
     observer: true,
     observeParents: true,
     navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
+      nextEl: '.testimonials-next',
+      prevEl: '.testimonials-prev',
     },
+
     pagination: {
-      el: '.swiper-pagination',
+      el: '.testimonials-pagination',
       clickable: true,
     },
+
     breakpoints: {
       704: {
         slidesPerView: 2,

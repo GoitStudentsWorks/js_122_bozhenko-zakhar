@@ -1,5 +1,5 @@
-import { dataStorage } from "./product-refs";
-
+import { dataStorage } from "../untils/product-refs";
+import { openModal } from "./adopt-modal";
 
 
 const refs = {
@@ -9,8 +9,6 @@ const refs = {
 document.addEventListener("click", (e) => {
     const moreInformationBtn = e.target.closest(".product-card__btn--learnMore")
     if (!moreInformationBtn) return;
-    
-		console.log(1)
     
     const id = moreInformationBtn.dataset.modalId;
     openAnimalModal(id);
@@ -22,7 +20,19 @@ function openAnimalModal(id) {
     if (!animal) return;
 
     refs.backdrop.innerHTML = createMarkup(animal);
-    refs.backdrop.classList.add("is-open")
+    refs.backdrop.classList.add("is-open");
+
+    document.body.classList.add(".not-scroll");
+
+
+		refs.dataBtn = document.querySelector("[data-btn]");
+
+		refs.dataBtn.addEventListener("click", () => {
+			openModal(id);
+            refs.backdrop.classList.remove("is-open");
+
+
+		})
 }
 
 function createMarkup({image, species, name, age, gender, description, healthStatus, behavior}) {
@@ -30,7 +40,7 @@ function createMarkup({image, species, name, age, gender, description, healthSta
 		<div class="animal-detail-modal">
 			<button type="button" aria-label="close button" class="animal-detail-close-btn">
 					<svg class="animal-detail-close-svg" width="32" height="32">
-							<use href="../img/sprite.svg#icon-close"></use>
+							<use href="/img/sprite.svg#icon-close"></use>
 					</svg>
 			</button>
 			<div class="animal-detail-picture-wrap">
@@ -70,16 +80,21 @@ function createMarkup({image, species, name, age, gender, description, healthSta
 `)
 }
 
+function closeAnimalModal() {
+    refs.backdrop.classList.remove("is-open");
+    document.body.classList.remove(".not-scroll");
+};
+
 refs.backdrop.addEventListener("click", (e) => {
 
     if (e.target === refs.backdrop || e.target.closest(".animal-detail-close-btn")) {
-        refs.backdrop.classList.remove("is-open")
-    }
+        closeAnimalModal();
+    };
     
-})
+});
 
 document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
-        refs.backdrop.classList.remove("is-open");
-    }
-})
+        closeAnimalModal();
+    };
+});
