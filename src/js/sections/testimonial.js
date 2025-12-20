@@ -12,8 +12,8 @@ function renderStars(value) {
   let starsMarkup = '';
 
   for (let i = 1; i <= 5; i++) {
-    let icon = 'icon-star-outline'; 
-    let starClass = ''; 
+    let icon = 'icon-star-outline';
+    let starClass = '';
 
     if (i <= Math.floor(rounded)) {
       icon = 'icon-star-filled';
@@ -94,4 +94,5 @@ function initSwiper() {
     },
   });
 }
+
 getFeedbacks();
