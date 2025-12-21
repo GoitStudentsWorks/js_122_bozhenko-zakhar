@@ -1,5 +1,6 @@
 import Swiper from 'swiper';
 import { Navigation, Pagination, Keyboard } from 'swiper/modules';
+import renderSlides from '../untils/gallery-render-images';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -26,3 +27,5 @@ new Swiper('.gallerySwiper', {
     enabled: true,
   },
 });
+
+renderSlides();
